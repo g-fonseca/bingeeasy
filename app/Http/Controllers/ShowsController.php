@@ -20,6 +20,12 @@ class ShowsController extends Controller
      */
     public function index()
     {
+
+        $enum_time = Show::$enum_time;
+        $enum_day = Show::$enum_day;
+        $enum_season = Show::$enum_season;
+        $enum_network = Show::$enum_network;
+
         $monday_shows = Show::where('day','Monday')->get();
         $tuesday_shows = Show::where('day','Tuesday')->get();
         $wednesday_shows = Show::where('day','Wednesday')->get();
@@ -31,7 +37,11 @@ class ShowsController extends Controller
             'tuesday_shows',
             'wednesday_shows',
             'thursday_shows',
-            'friday_shows'
+            'friday_shows',
+            'enum_time',
+            'enum_day',
+            'enum_season',
+            'enum_network'
         ));
     }
 

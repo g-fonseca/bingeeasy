@@ -39,6 +39,60 @@
                         </p>
                     @endif
                 </div>
+
+             <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('time', 'AIR-TIME', ['class' => 'control-label']) !!}
+                    {!! Form::text('time', $enum_time, old('time'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('time'))
+                        <p class="help-block">
+                            {{ $errors->first('time') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('season', 'SEASON', ['class' => 'control-label']) !!}
+                    {!! Form::text('season', $enum_season, old('season'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('season'))
+                        <p class="help-block">
+                            {{ $errors->first('season') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('network', 'NETWORK', ['class' => 'control-label']) !!}
+                    {!! Form::select('network', $enum_network, old('network'), ['class' => 'form-control']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('network'))
+                        <p class="help-block">
+                            {{ $errors->first('network') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('day', 'AIR-DAY', ['class' => 'control-label']) !!}
+                    {!! Form::select('day', $enum_day, old('day'), ['class' => 'form-control']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('day'))
+                        <p class="help-block">
+                            {{ $errors->first('day') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
+
               
                 <div class="col-xs-12 form-group">
                     {!! Form::label('photo', 'Image:', ['class' => 'control-label']) !!}
