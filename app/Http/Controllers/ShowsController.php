@@ -26,6 +26,7 @@ class ShowsController extends Controller
         $enum_season = Show::$enum_season;
         $enum_network = Show::$enum_network;
 
+
         $monday_shows = Show::where('day','Monday')->get();
         $tuesday_shows = Show::where('day','Tuesday')->get();
         $wednesday_shows = Show::where('day','Wednesday')->get();

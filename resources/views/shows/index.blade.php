@@ -43,7 +43,7 @@
              <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('time', 'AIR-TIME', ['class' => 'control-label']) !!}
-                    {!! Form::text('time', $enum_time, old('time'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::select('time', $enum_time, old('time'), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('time'))
                         <p class="help-block">
@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('season', 'SEASON', ['class' => 'control-label']) !!}
-                    {!! Form::text('season', $enum_season, old('season'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    {!! Form::select('season', $enum_season, old('season'), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('season'))
                         <p class="help-block">
