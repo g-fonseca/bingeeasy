@@ -86,13 +86,128 @@
 
           <div class="pill-content">
             <div id="home" class="pill-pane fade in active">
-              <p>No Shows for Monday</p>
+                @if (count($monday_shows) > 0)
+                    @foreach ($monday_shows as $show)
+                        <div class="well">
+                            <h3>{{ $show->name }}</h3>
+                            <p>  
+                                Air-Time:<br>  
+                                {{ $show->time }}
+
+                                Season:<br>  
+                                {{ $show->season }}
+
+                                Network:<br>  
+                                {{ $show->network }}
+
+                                Image: <br>    
+                                @if($show->photo != '')
+                                    <img src="{{ asset('uploads/thumb/'.$show->photo) }}">
+                                @endif
+
+                                On-Air:<br>  
+                                {{ $show->active == 1 ? 'Yes' : 'No' }}
+                            </p>
+                            <a href="{{ route('shows.show',[$show->id]) }}" class="btn btn-primary">View</a>
+                            <a href="{{ route('shows.edit',[$show->id]) }}" class="btn btn-primary">Edit</a>
+                            {!! Form::open(array(
+                                    'style' => 'display: inline-block;',
+                                    'method' => 'DELETE',
+                                    'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                                    'route' => ['shows.destroy', $show->id])) !!}
+                            {!! Form::submit('Delete', array('class' => 'btn btn-primary')) !!}
+                            {!! Form::close() !!}
+
+                    </div>
+                    @endforeach
+                @else
+                <h2>Yo you got no shows. Maybe you should make one...</h2>
+                          
+                @endif
+
+
             </div>
             <div id="menu1" class="pill-pane fade">
-              <p>No Shows for Tuesday</p>
+               @if (count($tuesday_shows) > 0)
+                    @foreach ($tuesday_shows as $show)
+                        <div class="well">
+                            <h3>{{ $show->name }}</h3>
+                            <p>  
+                                Air-Time:<br>  
+                                {{ $show->time }}
+
+                                Season:<br>  
+                                {{ $show->season }}
+
+                                Network:<br>  
+                                {{ $show->network }}
+
+                                Image: <br>    
+                                @if($show->photo != '')
+                                    <img src="{{ asset('uploads/thumb/'.$show->photo) }}">
+                                @endif
+
+                                On-Air:<br>  
+                                {{ $show->active == 1 ? 'Yes' : 'No' }}
+                            </p>
+                            <a href="{{ route('shows.show',[$show->id]) }}" class="btn btn-primary">View</a>
+                            <a href="{{ route('shows.edit',[$show->id]) }}" class="btn btn-primary">Edit</a>
+                            {!! Form::open(array(
+                                    'style' => 'display: inline-block;',
+                                    'method' => 'DELETE',
+                                    'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                                    'route' => ['shows.destroy', $show->id])) !!}
+                            {!! Form::submit('Delete', array('class' => 'btn btn-primary')) !!}
+                            {!! Form::close() !!}
+
+                        </div>
+                    @endforeach
+                @else
+                    <h2>Yo you got no shows. Maybe you should make one...</h2>
+                @endif
             </div>
+
             <div id="menu2" class="pill-pane fade">
-              <p>No Shows for Wednesday</p>
+               @if (count($wednesday_shows) > 0)
+                    @foreach ($wednesday_shows as $show)
+                        <div class="col-xs-12">
+                            <div class="well">
+                                <h3>{{ $show->name }}</h3>
+                                <p>  
+                                    Air-Time:<br>  
+                                    {{ $show->time }}
+
+                                    Season:<br>  
+                                    {{ $show->season }}
+
+                                    Network:<br>  
+                                    {{ $show->network }}
+
+                                    Image: <br>    
+                                    @if($show->photo != '')
+                                        <img src="{{ asset('uploads/thumb/'.$show->photo) }}">
+                                    @endif
+
+                                    On-Air:<br>  
+                                    {{ $show->active == 1 ? 'Yes' : 'No' }}
+                                </p>
+                                <a href="{{ route('shows.show',[$show->id]) }}" class="btn btn-primary">View</a>
+                                <a href="{{ route('shows.edit',[$show->id]) }}" class="btn btn-primary">Edit</a>
+                                {!! Form::open(array(
+                                        'style' => 'display: inline-block;',
+                                        'method' => 'DELETE',
+                                        'onsubmit' => "return confirm('".trans("Are you sure?")."');",
+                                        'route' => ['shows.destroy', $show->id])) !!}
+                                {!! Form::submit('Delete', array('class' => 'btn btn-primary')) !!}
+                                {!! Form::close() !!}
+
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                <h2>Yo you got no shows. Maybe you should make one...</h2>
+                          
+                @endif
             </div>
             <div id="menu3" class="pill-pane fade">
               <p>No Shows for Thursday</p>
@@ -110,49 +225,6 @@
           </div>
       </div>
        
-
-    <div class="row">
-        @if (count($shows) > 0)
-            @foreach ($shows as $show)
-                <div class="col-xs-12">
-                    <div class="well">
-                        <h3>{{ $show->name }}</h3>
-                        <p>  
-                            Air-Time:<br>  
-                            {{ $show->time }}
-
-                            Season:<br>  
-                            {{ $show->season }}
-
-                            Network:<br>  
-                            {{ $show->network }}
-
-                            Image: <br>    
-                            @if($show->photo != '')
-                                <img src="{{ asset('uploads/thumb/'.$show->photo) }}">
-                            @endif
-
-                            On-Air:<br>  
-                            {{ $show->active == 1 ? 'Yes' : 'No' }}
-                        </p>
-                        <a href="{{ route('shows.show',[$show->id]) }}" class="btn btn-primary">View</a>
-                        <a href="{{ route('shows.edit',[$show->id]) }}" class="btn btn-primary">Edit</a>
-                        {!! Form::open(array(
-                                'style' => 'display: inline-block;',
-                                'method' => 'DELETE',
-                                'onsubmit' => "return confirm('".trans("Are you sure?")."');",
-                                'route' => ['shows.destroy', $show->id])) !!}
-                        {!! Form::submit('Delete', array('class' => 'btn btn-primary')) !!}
-                        {!! Form::close() !!}
-
-                    </div>
-                </div>
-            @endforeach
-        @else
-        <h2>Yo you got no shows. Maybe you should make one...</h2>
-                  
-        @endif
-    </div> 
 
     </div>
 </div>

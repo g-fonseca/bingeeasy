@@ -20,9 +20,19 @@ class ShowsController extends Controller
      */
     public function index()
     {
-        $shows = Show::all();
+        $monday_shows = Show::where('day','Monday')->get();
+        $tuesday_shows = Show::where('day','Tuesday')->get();
+        $wednesday_shows = Show::where('day','Wednesday')->get();
+        $thursday_shows = Show::where('day','Thursday')->get();
+        $friday_shows = Show::where('day','Friday')->get();
 
-        return view('shows.index', compact('shows'));
+        return view('shows.index', compact(
+            'monday_shows',
+            'tuesday_shows',
+            'wednesday_shows',
+            'thursday_shows',
+            'friday_shows'
+        ));
     }
 
     /**
@@ -36,8 +46,6 @@ class ShowsController extends Controller
         $enum_day = Show::$enum_day;
         $enum_season = Show::$enum_season;
         $enum_network = Show::$enum_network;
-
-        
         return view('shows.create', compact('enum_time','enum_day','enum_season','enum_network'));
     }
 
@@ -110,8 +118,6 @@ class ShowsController extends Controller
     {
         $show = Show::findOrFail($id);
         $show->delete();
-
-
         return redirect()->route('shows.index');
     }
 

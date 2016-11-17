@@ -22,7 +22,7 @@ class UserSeed extends Seeder
         User::create([
             'name'     => 'Trevor Greenleaf',
             'email'    => 'info@trevorgreenleaf.com',
-            'password' => Hash::make('shows')
+            'password' => Hash::make('cats')
         ]);
     }
 }
